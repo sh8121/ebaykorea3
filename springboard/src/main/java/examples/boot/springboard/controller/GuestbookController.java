@@ -5,6 +5,8 @@ import examples.boot.springboard.repository.GuestbookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Date;
 
@@ -40,4 +42,36 @@ public class GuestbookController {
     public String list(){
         return "index";
     }
+
+    @PostMapping("/write")
+    public String write(@RequestParam(name = "name") String name,
+                   @RequestParam(name="content") String content){
+        System.out.println("name : " + name);
+        System.out.println("content : " + content);
+        return "redirect:/";
+    }
+
 }
+
+/*
+
+    Controller ( path에 해당하는 결과를 출력 ) - 프리젠테이션 레이어.
+
+    Service - 비지니스메소드를 가지고 있다. 트랜잭션단위로 동작한다.
+
+    Repository or DAO - 데이터
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -6,7 +6,9 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.Date;
 /*
-    Guestbook guestbook = new Guestbook();
+    Guestbook guestbook = new Guestbook(); // java heap 메모리에
+    guestbook.setName("홍길동");
+    guestbook.setContent("...");
 
     JPA - EntityManager를 직접 개발자가 사용한다.
     영속성관리자.영속성부여(guestbook);

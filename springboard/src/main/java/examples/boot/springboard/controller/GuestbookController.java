@@ -50,7 +50,7 @@ public class GuestbookController {
         Page<Guestbook> guestbooks =
                 guestbookService.getGuestbook(page);
         modelMap.addAttribute("guestbookPage",
-                guestbooks.getContent());
+                guestbooks);
         return "index";
     }
 

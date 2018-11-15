@@ -15,7 +15,7 @@
         </form>
 
         <br>
-        <c:forEach items="${guestbookPage}" var="guestbook" >
+        <c:forEach items="${guestbookPage.content}" var="guestbook" >
             ${guestbook.id}<br>
             ${guestbook.name}<br>
             <pre>${guestbook.content}</pre><br>

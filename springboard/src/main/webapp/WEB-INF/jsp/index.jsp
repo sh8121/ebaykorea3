@@ -1,3 +1,4 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
     <head>
         <title>guestbook</title>
@@ -12,5 +13,14 @@
                        cols="30" rows="10"></textarea><br>
             <input type="submit">
         </form>
+
+        <br>
+        <c:forEach items="${guestbookPage}" var="guestbook" >
+            ${guestbook.id}<br>
+            ${guestbook.name}<br>
+            <pre>${guestbook.content}</pre><br>
+            <hr><br>
+        </c:forEach>
+
     </body>
 </html>

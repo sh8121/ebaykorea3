@@ -2,8 +2,11 @@ package examples.boot.springboard.controller;
 
 import examples.boot.springboard.domain.Guestbook;
 import examples.boot.springboard.repository.GuestbookRepository;
+import examples.boot.springboard.service.GuestbookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,18 +39,30 @@ View를 보여주게 된다.
 @Controller
 public class GuestbookController {
     @Autowired // 의존성 주입.
-    GuestbookRepository guestbookRepository;
+    GuestbookService guestbookService;
 
+    //  /?page=0    /?page=1 ....
     @GetMapping("/")
-    public String list(){
+    public String list(
+         @RequestParam(name = "page", defaultValue = "0") int page,
+         ModelMap modelMap
+    ){
+        Page<Guestbook> guestbooks =
+                guestbookService.getGuestbook(page);
+        modelMap.addAttribute("guestbookPage",
+                guestbooks.getContent());
         return "index";
     }
 
     @PostMapping("/write")
     public String write(@RequestParam(name = "name") String name,
                    @RequestParam(name="content") String content){
-        System.out.println("name : " + name);
-        System.out.println("content : " + content);
+        Guestbook guestbook = new Guestbook();
+        guestbook.setName(name);
+        guestbook.setContent(content);
+        guestbook.setRegate(new Date()); // java.util.Date
+        guestbook = guestbookService.addGuestbook(guestbook);
+        System.out.println(guestbook.getId());
         return "redirect:/";
     }
 

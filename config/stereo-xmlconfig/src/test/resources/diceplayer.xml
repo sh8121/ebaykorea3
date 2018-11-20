@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:c="http://www.springframework.org/schema/c"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="game" class="soundsystem.Game">
+        <property name="playerList">
+            <list>
+                <ref bean="kim"/>
+                <ref bean="choi"/>
+                <ref bean="kang"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="kim" class="soundsystem.Player">
+        <property name="dice" ref="dice"/>
+        <property name="name" value="김성박"/>
+    </bean>
+
+    <bean id="choi" class="soundsystem.Player">
+        <property name="dice" ref="dice"/>
+        <property name="name" value="최준영"/>
+    </bean>
+
+    <bean id="kang" class="soundsystem.Player">
+        <property name="dice" ref="dice"/>
+        <property name="name" value="강사무엘"/>
+    </bean>
+
+
+
+    <!--
+Dice dice = new Dice(6);
+-->
+    <bean id="dice" class="soundsystem.Dice">
+        <constructor-arg value="6"/>
+    </bean>
+</beans>
+

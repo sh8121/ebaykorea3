@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:c="http://www.springframework.org/schema/c"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+    scope이 prototype일 경우에는 매번 인스턴스를 생성한다.
+    MyBean bean1 = new MyBean();
+    bean1.setName("urstory");
+    bean1.setCount(100);
+    -->
+    <bean id="bean1" class="soundsystem.MyBean">
+        <property name="name" value="urstory"/>
+        <property name="count" value="100"/>
+    </bean>
+
+    <!-- 파라미터를 2개 받는 생성자를 이용하여 필드를 초기화한다. -->
+    <bean id="bean2" class="soundsystem.MyBean">
+        <constructor-arg value="urstory"/>
+        <constructor-arg value="200"/>
+    </bean>
+
+    <bean id="bean3" class="soundsystem.MyBean">
+        <constructor-arg>
+            <map>
+                <entry key="a1" value="Kang"/>
+                <entry key="a2" value="Kim"/>
+                <entry key="b1" value="Choi"/>
+                <entry key="c1" value="Shin"/>
+            </map>
+        </constructor-arg>
+    </bean>
+</beans>
+

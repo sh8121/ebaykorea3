@@ -18,4 +18,5 @@ public class BoardContent {
     @JoinColumn(name = "board_id")
     private Board board;
 
+    private String content;
 }

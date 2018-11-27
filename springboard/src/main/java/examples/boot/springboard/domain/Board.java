@@ -2,6 +2,8 @@ package examples.boot.springboard.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -24,7 +26,7 @@ public class Board {
 
     private String title;
 
-    @OneToOne(mappedBy = "board", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "board", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private BoardContent boardContent;
 
     private int readCount;

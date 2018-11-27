@@ -23,9 +23,10 @@ public class Board {
     private Set<UploadFile> uploadFiles;
 
     private String title;
-    @Lob
-    @Basic(fetch = FetchType.LAZY)
-    private String content;
+
+    @OneToOne(mappedBy = "board", cascade = CascadeType.ALL)
+    private BoardContent boardContent;
+
     private int readCount;
     private LocalDateTime createDate;
 }

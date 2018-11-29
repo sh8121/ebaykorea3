@@ -1,9 +1,11 @@
 package examples.boot.springboard.controller;
 
+import examples.boot.springboard.domain.Board;
 import examples.boot.springboard.security.AuthUser;
 import examples.boot.springboard.security.LoginUser;
 import examples.boot.springboard.service.BoardService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -44,7 +46,19 @@ public class BoardController {
     }
 
     @GetMapping
-    public String boards(){
+    public String boards(
+            @RequestParam(name = "page",
+                    required = false,
+                    defaultValue = "1"
+            ) int page,
+            ModelMap modelMap){
+        if(page < 1) page = 1;
+
+        Page<Board> boardPage =
+                boardService.getBoards(page);
+        modelMap.addAttribute("boardPage",
+                boardPage);
+
         return "boards/list"; // view name
     }
 }

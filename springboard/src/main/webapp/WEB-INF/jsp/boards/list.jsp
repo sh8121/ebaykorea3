@@ -12,5 +12,12 @@
     <body>
     <%--http://localhost:8080/boards--%>
     <h1>Board List!</h1>
+
+    <c:forEach items="${boardPage.content}" var="board">
+       ${board.member.name} , ${board.title},
+         ${board.readCount}, ${board.createDate}<br>
+    </c:forEach>
+
+    <a href="/boards/writeform">글쓰기</a>
     </body>
 </html>

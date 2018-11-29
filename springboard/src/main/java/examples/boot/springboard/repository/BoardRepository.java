@@ -16,7 +16,7 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
 //    public List<Board> getBoards(Page);
 
     @Query(
-    value = "select b from Board b inner join fetch b.member inner join fetch b.boardContent order by b.id desc",
+    value = "select b from Board b order by b.id desc",
     countQuery = "select count(b) from Board b")
     public Page<Board> getBoards(Pageable pageable);
 }

@@ -41,6 +41,7 @@ public class CustomUserDetailsService
                 = new LoginUser(email,
                 member.getPassword(),authorities);
         loginUser.setName(member.getName());
+        loginUser.setUserId(member.getId());
         return loginUser;
     }
 }

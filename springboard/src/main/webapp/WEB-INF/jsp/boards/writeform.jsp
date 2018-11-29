@@ -13,6 +13,13 @@
     <%--http://localhost:8080/boards--%>
     <h1>Board writeform!</h1>
 
-    ${name}
+    <form method="post" action="/boards">
+        name : ${name}<br>
+        <input type="hidden" name="${_csrf.parameterName}"
+               value="${_csrf.token}" />
+        title : <input type="text" name="title"><br>
+        <textarea name="content" cols="50" rows="5"></textarea>
+        <input type="submit">
+    </form>
     </body>
 </html>

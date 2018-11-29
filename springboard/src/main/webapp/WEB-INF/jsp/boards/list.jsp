@@ -10,6 +10,7 @@
         <title>list</title>
     </head>
     <body>
-
+    <%--http://localhost:8080/boards--%>
+    <h1>Board List!</h1>
     </body>
 </html>

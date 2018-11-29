@@ -1,8 +1,8 @@
 insert into member (id, name, email, password, regdate)
-values( 1, 'kim', 'urstory@gmail.com', '1234', now());
+values( 1, 'kim', 'urstory@gmail.com', '{bcrypt}$2a$10$RCC2ueLLrrBTfGWaXd/AIuvN5WVpr9sScNjWddMNfaNAOjdVwj3Ve', now());
 
 insert into member (id, name, email, password, regdate)
-values( 2, 'kang', 'carami@gmail.com', '1234', now());
+values( 2, 'kang', 'carami@gmail.com', '{bcrypt}$2a$10$RCC2ueLLrrBTfGWaXd/AIuvN5WVpr9sScNjWddMNfaNAOjdVwj3Ve', now());
 
 insert into role (id, name) values (1, 'USER');
 insert into role (id, name) values (2, 'ADMIN');

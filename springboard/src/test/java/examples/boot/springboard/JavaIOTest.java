@@ -40,6 +40,23 @@ public class JavaIOTest {
 
     @Test
     public void copy2(){
+        // 키보드로부터 한줄씩 입력받아, 파일에 한줄씩 저장하고
+        // quit를 입력하면 프로그램은 종료된다.
+
+        BufferedReader br = null;
+        try{
+            br = new BufferedReader(new InputStreamReader(System.in ));
+            String line = null;
+            while((line = br.readLine()) != null){
+                if("quit".equals(line))
+                    break;
+                System.out.println(line);
+            }
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally {
+
+        }
 
     }
 }

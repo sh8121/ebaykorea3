@@ -2,6 +2,12 @@ java io
 
 byte, char 단위 입출력
 
+특수한 IO
+
+System.in : 표준입력장치 - InputStream
+System.out : 표준출력장치 - PrintStream
+System.err : 표준에러출력장치 - PrintStream
+
 아래와 같은 추상클래스를 제공한다. (가장 기본이 된다.)
 
 byte단위

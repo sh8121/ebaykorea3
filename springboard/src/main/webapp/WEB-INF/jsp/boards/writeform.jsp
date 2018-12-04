@@ -13,12 +13,13 @@
     <%--http://localhost:8080/boards--%>
     <h1>Board writeform!</h1>
 
-    <form method="post" action="/boards">
+    <form method="post" action="/boards" enctype="multipart/form-data">
         name : ${name}<br>
         <input type="hidden" name="${_csrf.parameterName}"
                value="${_csrf.token}" />
         title : <input type="text" name="title"><br>
         <textarea name="content" cols="50" rows="5"></textarea>
+        <input type="file" name="uploadFile">
         <input type="submit">
     </form>
     </body>

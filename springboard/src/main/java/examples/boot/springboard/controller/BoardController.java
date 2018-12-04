@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.security.Principal;
 
@@ -36,7 +37,8 @@ public class BoardController {
     @PostMapping
     public String write(@AuthUser LoginUser loginUser,
         @RequestParam(name = "title")String title,
-        @RequestParam(name = "content")String content
+        @RequestParam(name = "content")String content,
+        @RequestParam("uploadFile") MultipartFile uploadFile
     ){
         Assert.hasText(title, "제목을 입력하세요.");
         Assert.hasText(content, "내용을 입력하세요.");

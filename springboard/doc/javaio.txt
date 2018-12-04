@@ -27,3 +27,42 @@ char단위
 위의 4가지 중에 하나를 생성자에서 받아들이는 클래스는 장식에 해당하는 클래스다.
 
 
+-------------
+AWS 에서 S3에 저장
+
+
+    public ImageExif save(MultipartFile multipartFile, String dirName) throws IOException {
+
+        ObjectMetadata objectMetadata = new ObjectMetadata();
+        objectMetadata.setContentType(multipartFile.getContentType());
+        objectMetadata.setContentLength(multipartFile.getSize());
+        String fileKey = dirName + "/" + UUID.randomUUID();
+        amazonS3Client.putObject(bucket, fileKey, multipartFile.getInputStream(), objectMetadata);
+        amazonS3Client.getUrl(bucket, fileKey).toString();
+
+        ImageExif imageExif = getImageExif(fileKey, multipartFile.getSize());
+        imageExif.setFileKey(fileKey);
+        return imageExif;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

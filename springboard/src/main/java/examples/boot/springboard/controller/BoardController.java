@@ -12,12 +12,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.Assert;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.security.Principal;
 import java.util.UUID;
@@ -35,6 +33,48 @@ public class BoardController {
         map.addAttribute("name", loginUser.getName());
         // 제목, 내용 입력.
         return "boards/writeform";
+    }
+
+    // view 가 없다. 출력자체가 결과
+    @GetMapping("/download/{id}")
+    @ResponseBody
+    public void download(
+            @PathVariable(name = "id") Long id,
+            HttpServletResponse response){
+        // 파일을 읽어서 response의 outputStream으로 출력한다.
+        response.setContentType("text/plain");
+        response.setContentLength(7780);
+        InputStream in = null;
+        OutputStream out = null;
+
+        try{
+            in = new FileInputStream("/tmp/2018/12/4/96e0dea1-99f3-41a9-8da9-60fde10dc1b7");
+            out = response.getOutputStream();
+
+            byte[] buffer = new byte[1024];
+            int readCount = 0;
+
+            // 2000 byte
+            while((readCount = in.read(buffer)) != -1){
+                // buffer배열의 0번째부터 readCount까지 써라.
+                out.write(buffer,0, readCount);
+                out.flush();
+            }
+
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally {
+            try {
+                in.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                out.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @PostMapping

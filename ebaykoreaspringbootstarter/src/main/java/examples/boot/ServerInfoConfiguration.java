@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 public class ServerInfoConfiguration {
 
     @Bean
+    @ConditionalOnMissingBean(type = {"examples.boot.ServerInfo"})
     public ServerInfo serverInfo(
             ServerInfoProperties serverInfoProperties){
         ServerInfo serverInfo = new ServerInfo();

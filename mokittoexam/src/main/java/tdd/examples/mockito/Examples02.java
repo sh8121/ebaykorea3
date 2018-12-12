@@ -21,7 +21,7 @@ public class Examples02 {
         when(mockedList.get(1)).thenThrow(new RuntimeException());
 
         System.out.println(mockedList.get(0)); // first
-        System.out.println(mockedList.get(1)); // Runtime exception 발생
+//        System.out.println(mockedList.get(1)); // Runtime exception 발생
         System.out.println(mockedList.get(10)); // null
 
         verify(mockedList).get(0);

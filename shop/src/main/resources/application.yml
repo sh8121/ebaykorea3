@@ -1,0 +1,15 @@
+spring:
+    datasource:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/shop?useUnicode=yes&characterEncoding=UTF-8
+      username: shop
+      password: shop
+      initialization-mode: always
+    mvc:
+      view:
+        prefix: /WEB-INF/jsp
+        suffix: .jsp
+    jpa:
+      hibernate:
+        ddl-auto: create-drop
+      show-sql: true

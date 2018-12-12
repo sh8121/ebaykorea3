@@ -4,6 +4,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 // serverinfo.address
 // serverinfo.port
+// serverinfo.real.ip
 @ConfigurationProperties("serverinfo")
 public class ServerInfoProperties {
     private String address;

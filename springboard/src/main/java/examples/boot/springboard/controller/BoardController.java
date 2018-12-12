@@ -4,7 +4,6 @@ import examples.boot.springboard.domain.Board;
 import examples.boot.springboard.security.AuthUser;
 import examples.boot.springboard.security.LoginUser;
 import examples.boot.springboard.service.BoardService;
-import jdk.internal.util.xml.impl.Input;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.security.core.Authentication;

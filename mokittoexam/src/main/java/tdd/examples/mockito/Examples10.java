@@ -23,6 +23,19 @@ public class Examples10 {
 
     @Test
     public void test() {
+        // 이름 없는 객체 생성.
+        MyCommand myCommand = new MyCommand(){
+            public void exec(){
+                System.out.println("hahahaha");
+            }
+        };
+        myCommand.exec();
+
+
+        MyCommand myCommand2 = () -> System.out.println("hahahaha");
+        myCommand2.exec();
+
+
         when(mockedList.get(anyInt())).thenAnswer((invocationOnMock)->{
                 Integer intObj = invocationOnMock.getArgumentAt(0, Integer.class);
                 return intObj.intValue() + 5;
@@ -56,4 +69,9 @@ public class Examples10 {
         System.out.println(mockedList.get(1)); // called with argument: 2\
         System.out.println(mockedList.size());
     }
+}
+
+
+interface MyCommand{
+    public void exec();
 }

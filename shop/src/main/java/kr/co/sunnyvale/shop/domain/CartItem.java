@@ -20,7 +20,7 @@ public class CartItem {
 
     @ManyToOne
     @JoinColumn(name = "item_id")
-    private Item product;
+    private Item item;
 
     @Column(nullable = false)
     private int price;

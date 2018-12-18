@@ -26,5 +26,5 @@ public class OrderedItem {
 
     @ManyToOne
     @JoinColumn(name = "item")
-    private Item product;
+    private Item item;
 }

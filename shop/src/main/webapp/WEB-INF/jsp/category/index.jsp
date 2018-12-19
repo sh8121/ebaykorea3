@@ -8,12 +8,10 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
-    <h2>${welcomeMessage}</h2>
-    <c:forEach var="rootCategory" items="${rootCategories}">
-        <a href="/categories/${rootCategory.id}">${rootCategory.name}</a>
-    </c:forEach>
-    <br/>
-    <c:forEach var="item" items="${items}">
-        <a href="/items/${item.id}">${item.name}</a>
-    </c:forEach>
+<h2>${welcomeMessage}</h2>
+${category.name}
+<br/>
+<c:forEach var="item" items="${items}">
+    <a href="/items/${item.id}">${item.name}</a>
+</c:forEach>
 </body>

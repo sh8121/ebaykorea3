@@ -23,7 +23,11 @@ public class UserArgumentResolver implements HandlerMethodArgumentResolver {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if(authentication == null)
             return null;
-        CustomUserDetails customUserDetails = (CustomUserDetails)authentication.getPrincipal();
-        return customUserDetails;
+        try {
+            CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
+            return customUserDetails;
+        }catch (Exception ex) {
+            return null;
+        }
     }
 }

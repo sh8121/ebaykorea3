@@ -15,6 +15,11 @@ public class ItemService {
 
     @Transactional(readOnly = true)
     public List<Item> getAllItems(){
-        return itemRepository.findAll();
+        return itemRepository.getAllItems();
+    }
+
+    @Transactional(readOnly = true)
+    public List<Item> getAllItemsByItemCategory(long itemCategoryId){
+        return itemRepository.getAllItemsByItemCategory(itemCategoryId);
     }
 }

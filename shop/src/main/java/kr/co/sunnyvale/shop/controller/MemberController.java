@@ -20,17 +20,17 @@ public class MemberController {
     private MemberService memberService;
 
     @GetMapping("/login")
-    public String login(){
+    public String loginPage(){
         return "/members/login";
     }
 
     @GetMapping("/join")
-    public String joinform() {
+    public String joinPage() {
         return "/members/join";
     }
 
     @PostMapping("/join")
-    public String join(@RequestParam(name = "id")String email, @RequestParam(name = "password")String password, @RequestParam(name = "name")String name, ModelMap modelMap){
+    public String joinProcess(@RequestParam(name = "id")String email, @RequestParam(name = "password")String password, @RequestParam(name = "name")String name, ModelMap modelMap){
         if(!StringUtils.hasText(email) || !StringUtils.hasText(password) || !StringUtils.hasText(name)){
             modelMap.addAttribute("message", "정보를 정확히 입력하세요");
             return "/members/join";

@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -20,6 +21,11 @@ public class ItemCategoryService {
 
     @Transactional(readOnly = true)
     public List<ItemCategory> getAllItemCategories(){
-        return itemCategoryRepository.findAll();
+        return itemCategoryRepository.getAllItemCategories();
+    }
+
+    @Transactional(readOnly = true)
+    public ItemCategory getItemCategory(long id){
+        return itemCategoryRepository.getItemCategoryById(id);
     }
 }
